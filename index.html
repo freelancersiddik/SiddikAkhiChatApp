@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HP Chat app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Fuzzy+Bubbles&family=Josefin+Slab:ital,wght@0,100;0,400;0,500;0,600;1,100;1,300;1,400;1,500;1,600&family=Poppins&family=Raleway:ital,wght@0,100;0,200;0,300;0,700;1,200;1,300&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="sass/main.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="title">
+                <figure>
+                    <img src="logo.png" height="40" alt="Logo">
+                </figure>
+                <h1>A/S</h1>
+            </div>
+
+            <button type="button" onclick="show_hide()">
+                <img src="bars-2-128.png" width="50" alt="icon">
+            </button>
+        </header>
+        <div class="container">
+            <div class="users_window">
+                <div class="users_head">
+                    <h3>people</h3>
+                    <h4 class="users_count">0</h4>
+                </div>
+
+                <div class="users_list">
+                 <p></p>
+                </div>
+            </div>
+            <div class="chat_window">
+                <div class="chats">
+                    <div class="user_join">
+                        <p><b>Welcome</b>To A/S Chats</p>
+                    </div>
+                    <!-- <div class="message incoming">
+                        <h5>Siddik</h5>
+                        <p>Hello Khan</p>
+                    </div>
+                    <div class="message outgoing">
+                        <h5>Khan</h5>
+                        <p>Hello Siddik</p>
+                    </div> -->
+                    
+                </div>
+                <div class="user_input">
+                    <input type="text" name="text" placeholder="Type Your Message" id="user_msg">
+                    <button id="user_send" >Send</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+<script>
+    const uWindow = document.querySelector(".users_window")
+    function show_hide() {
+        if (uWindow.style.display == "block") {
+            uWindow.style.display = "none"
+        } else {
+            uWindow.style.display = "block"
+        }
+    }
+</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/client.js"></script>
+
+</html>

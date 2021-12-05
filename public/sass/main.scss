@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+}
+html {
+    font-family: "Baloo 2", cursive;
+    
+}
+$light_blue: #2791cf;
+$light_gray: #a4b3bb;
+$dark_gray: #3f3f3f;
+$white: #ffffff;
+
+@mixin flexing($fd, $ai, $jc) {
+    display: flex;
+    flex-direction: $fd;
+    align-items: $ai;
+    justify-content: $jc;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    overflow: hidden;
+    border-radius: 1em;
+    header {
+        background: $light_blue;
+        color: $white;
+        padding: 7px 20px;
+        @include flexing(row, center, space-between);
+        div.title {
+            @include flexing(row, center, flex-start);
+            h1 {
+                color: $dark_gray;
+            }
+        }
+        button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+    }
+
+    // container
+
+    div.container {
+        background: $light-gray;
+        padding: 1rem;
+        @include flexing(row, stretch, flex-start);
+        // user window
+        div.users_window {
+            width: 300px;
+            color: $white;
+            background: $dark_gray;
+            padding: 1rem 1.7rem;
+            border-radius: 0.7rem;
+            div.users_head {
+                @include flexing(row, center, space-between);
+                margin-bottom: 0.9rem;
+                h4 {
+                    background-color: $light_gray;
+                    padding: 0 8px;
+                    border-radius: 55px;
+                    color: $dark_gray;
+                }
+            }
+            div.users_list {
+                p {
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    margin-bottom: 0.8rem;
+                }
+            }
+        }
+
+        // chat window
+        div.chat_window {
+            width: 100%;
+            border-radius: 10px;
+            background: $dark_gray;
+            margin-left: 1rem;
+
+            div.chats {
+                min-height: 65vh;
+                padding: 20px;
+                overflow-y: auto;
+                div.user_join {
+                    font-size: 0.8rem;
+                    color: $dark_gray;
+                    background-color: $white;
+                    border-radius: 58px;
+                    padding: 7px 20px;
+                    width: max-content;
+                    margin: 0 auto;
+                    margin-bottom: 15px;
+                }
+                div.message {
+                    color: $dark_gray;
+                    background: $white;
+                    padding: 10px 15px;
+                    max-width: 400px;
+                    margin-bottom: 15px;
+                    border-radius: 10px 50px 50px 10px;
+                    position: relative;
+                    h5 {
+                        font-size:12px;
+                        color: $dark_gray;
+                    }
+                    p {
+                        font-size: 16px;
+                    }
+                }
+                div.outgoing {
+                    margin-left: auto;
+                    border-radius: 50px 10px 10px 50px;
+                    color: $white;
+                    background: $light_blue;
+                    text-align: right;
+                }
+            }
+            div.user_input {
+                @include flexing(row, stretch, space-between);
+                padding: 20px;
+                input {
+                    font-size: 1rem;
+                    background: $white;
+                    padding: 10px 20px;
+                    outline: none;
+                    border: none;
+                    width: 100%;
+                    border-radius: 50px 0px 00px 50px;
+                }
+                button {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 5px 15px;
+                    border: none;
+                    outline: none;
+                    letter-spacing: 0.5px;
+                    color: $white;
+                    background: $light_blue;
+                    border-radius: 0px 50px 50px 0px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        width: 95%;
+        header {
+            button {
+                display: block;
+            }
+        }
+        div.container {
+            position: relative;
+            div.users_window {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 100;
+                border-radius: 0 0 10px 10px;
+                height: max-content;
+                display: none;
+            }
+            div.chat_window {
+                margin: 0;
+                div.chats {
+                    .message {
+                        width: 220px;
+                     h5{
+                         font-size: 14px !important;
+                     }
+                    }
+                }
+            }
+        }
+    }
+}
